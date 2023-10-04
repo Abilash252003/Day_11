@@ -1,0 +1,42 @@
+///100 Days of RTL Challenge///
+
+///Abilash P///
+
+///4bit Multiplier///
+
+module bit4_multiplier_tb();
+
+reg  [3:0]a_in, b_in;
+wire [7:0]out;
+
+bit4_multiplier DUT(.a_in(a_in), .b_in(b_in), .out(out));
+
+integer i;
+
+initial 
+begin
+  a_in = 4'b0000;
+  b_in = 4'b0000;
+end
+
+initial
+begin
+   a_in=4'b0011;
+   for(i=0; i<16; i=i+1)
+   begin
+      b_in = i;
+      #20; 
+      $display ("Input A = %b----Input B = %b----Output Out = %b",a_in,b_in,out);
+   end
+   $display ("--------------------------------------------------------------------");
+    b_in=4'b1111;
+   for(i=0; i<16; i=i+1)
+   begin
+      a_in = i;
+      #20; 
+      $display ("Input A = %b----Input B = %b----Output Out = %b",a_in,b_in,out);
+   end
+end
+
+
+endmodule
